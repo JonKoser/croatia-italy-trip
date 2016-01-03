@@ -28,16 +28,14 @@ $(document).ready(function() {
     //use jquery to get the GeoJSON data and send it to be processed
 	//loads the geojson then passes it to the .done method to be used in the 
 	//anonymous function as "data". Need to do this for L.geoJson to work
-	//(needs it parsed into features) if it failed, it'll excecute the alert
+	//(needs it parsed into features) if it failed, it'll excecute the alert    
 	$.getJSON("data/citrip.geojson").done(function(data) {
         //create the city markers
         markCities(data);
 
         
 	}).fail(function() {alert ("There has been a problem loading the data.")}); 
-    
-    
-    
+
     
     
     
@@ -47,13 +45,29 @@ $(document).ready(function() {
     function markCities(data) {
         //create the cities layers
         cities = L.geoJson(data, {
-            pointToLayer: function(feature, latln) {
-                return L.circleMarker(latln)
-            }
+            onEachFeature: onEachCity,
+            pointToLayer: makeMarker
           
-        }).addTo(map);  
+        }).addTo(map)// .on("click", function (e) {console.log(e.layer.feature.properties.ID)}).addTo(map);  
         
     }; //end markCities function
+    
+    
+    //creates the marker icon
+    function makeMarker(feature, latlng) {
+        return L.marker(latlng)
+    }; //end makeMarker
+    
+    
+    //for each feature
+    function onEachCity(feature, layer) {
+        //binds the popup
+        layer.bindPopup(feature.properties.City);
+        //function for every time a city is clicked
+        layer.on("click", function (e) {
+            console.log(feature.properties.City);
+        })
+    }; //end onEachCity
     
     
     //resizes the elements based off of screen height
