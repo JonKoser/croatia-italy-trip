@@ -1,3 +1,9 @@
+#topInfo {
+    text-align: center;
+    color: aliceblue;
+    padding-top: 10px;
+}
+
 #sidebar {
     background-color: rgb(30, 30, 30);
 }
@@ -9,4 +15,9 @@
 #map {
     width: 75%;
     float: left
+}
+
+.control:hover {
+    cursor: pointer;
+    color: darkorange
 }
