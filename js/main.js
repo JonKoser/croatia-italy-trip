@@ -1,5 +1,6 @@
 $(document).ready(function() {
     
+    var cities; //collection of leaflet layers - one for each city
     var citiesArray = []; //collection of city layers
     var currentCity = 1; //the order number of the currently selected city
     
@@ -26,13 +27,14 @@ $(document).ready(function() {
     
 
     
-    //use jquery to get the GeoJSON data and send it to be processed
-	//loads the geojson then passes it to the .done method to be used in the 
-	//anonymous function as "data". Need to do this for L.geoJson to work
-	//(needs it parsed into features) if it failed, it'll excecute the alert    
+    //use jquery to get the GeoJSON data and send it to be processed into a
+    //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
+	//anonymous function to complete the process. Need to do this for L.geoJson to work
+	//(needs it processed into a collection of geoJSON features) if it failed, it'll excecute the alert    
 	$.getJSON("data/citrip.geojson").done(function(data) {
         //create the city markers
         markCities(data);
+        console.log(data)
         //create an array of city features from the processed data
         citiesArray = data.features;
         //set up the navigation
@@ -71,13 +73,14 @@ $(document).ready(function() {
     //adds the cities markers to the map
     function markCities(data) {
         //create the cities layers
-        var cities = L.geoJson(data, {
+        cities = L.geoJson(data, {
             onEachFeature: onEachCity,
             pointToLayer: makeMarker
             
         }).addTo(map) //.on("click", function (e) {
             //$("#titleText").text(" " + e.layer.feature.properties.Order + ". " + e.layer.feature.properties.City + " ");
         //}).addTo(map);  
+
         
     }; //end markCities function
     
@@ -104,6 +107,7 @@ $(document).ready(function() {
     //changes the sidebar content based on the current city
     function updateContent() {
         //select a feature to look at
+        //does this based off of the current city number - 1 to equal the correct position in the cities array
         var feature = citiesArray[currentCity - 1]
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");
