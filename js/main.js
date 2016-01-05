@@ -35,7 +35,7 @@ $(document).ready(function() {
         //create the city markers
         markCities(data);
         console.log(data)
-        //create an array of city features from the processed data
+        //create an array of city features from the processed data - easier to access properties
         citiesArray = data.features;
         //set up the navigation
         navigate();
@@ -53,16 +53,29 @@ $(document).ready(function() {
     
     //adds event listeners for click the previous and next arrows
     function navigate() {
+        var newCity; //the updated city number
         //for clicking the previous arrow
         $("#previous").on("click", function (e) {
-            currentCity = currentCity - 1;
+            newCity = currentCity - 1;
+            if (newCity < 1) {
+                currentCity = citiesArray.length;
+            }
+            else {
+                currentCity = newCity;
+            }
             console.log("previous!")
             updateContent();
         });
         
         //for clicking the next arrow
         $("#next").on("click", function (e) {
-            currentCity = currentCity + 1;
+            newCity = currentCity + 1;
+            if (newCity > citiesArray.length) {
+                currentCity = 1
+            }
+            else {
+                currentCity = newCity;
+            }
             console.log("next!")
             updateContent();
         });
