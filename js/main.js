@@ -1,9 +1,10 @@
 $(document).ready(function() {
     
-    var cities; //collection of leaflet layers - one for each city
     var citiesArray = []; //collection of city layers
     var currentCity; //the order number of the currently selected city
     var currentMarker; //the marker icon which is currently selected
+    var markerArray = []; //collection of markers
+    var markerNum; //number of the current marker in the marker array - starts at the first;
     
     //set the sizes and keep them up to date
     var h; //create the variable for height
@@ -57,8 +58,6 @@ $(document).ready(function() {
         navigate();
         
 	}).fail(function() {alert ("There has been a problem loading the data.")}); 
-
-    
     
     
     //=============FUNCTIONS=====================//
@@ -67,41 +66,60 @@ $(document).ready(function() {
 
     
     //adds event listeners for click the previous and next arrows
+    //so the main issue with this function is that it is dependent on the list being in order.
+    //I should fix that at some point. All the property info is in each marker, I should keep that
+    //in mind.
     function navigate() {
         var newCity; //the updated city number
+        var oldMarker; //the old marker number
+        var oldZ; //the old Z value
         //for clicking the previous arrow
         $("#previous").on("click", function (e) {
             newCity = currentCity - 1;
+            oldMarker = markerNum;
             if (newCity < 1) {
                 currentCity = citiesArray.length;
+                markerNum = citiesArray.length - 1;
             }
             else {
                 currentCity = newCity;
+                markerNum --;
             }
-            console.log("previous!")
             updateContent();
+            updateMarker(oldMarker);
         });
         
         //for clicking the next arrow
         $("#next").on("click", function (e) {
             newCity = currentCity + 1;
+            oldMarker = markerNum;
             if (newCity > citiesArray.length) {
-                currentCity = 1
+                currentCity = 1;
+                markerNum = 0;
             }
             else {
                 currentCity = newCity;
+                markerNum ++;
             }
-            console.log("next!")
             updateContent();
+            updateMarker(oldMarker);
         });
         
     }; //end navigate function
     
+    //updates the selected marker
+    function updateMarker(oldMarker) {
+        markerArray[oldMarker].setIcon(nonSelectedIcon);
+        //markerArray[oldMarker].setZIndexOffset(0);
+        markerArray[markerNum].setIcon(selectedIcon);
+        //markerArray[markerNum].setZIndexOffset(1000);
+        
+    } //end update Marker
     
     //adds the cities markers to the map
     function markCities(data) {
         //create the cities layers
-        cities = L.geoJson(data, {
+        var cities = L.geoJson(data, {
             onEachFeature: onEachCity,
             pointToLayer: makeMarker
             
@@ -113,6 +131,7 @@ $(document).ready(function() {
     }; //end markCities function
     
     //creates the markers
+    var i = 0; //I suck, so here's a global iterator for the following function because scope is annoying, haha
     function makeMarker(feature, latlng) {   
         //gives Rovinj a red marker to begin with
         var useIcon;
@@ -131,6 +150,8 @@ $(document).ready(function() {
             };
             //sets the clicked icon (e.target) to the red one
             e.target.setIcon(selectedIcon);
+            //resets the z index
+            //currentMarker.setZIndexOffset(0);
             //assigns the currently selected marker as the one that was clicked
             currentMarker = e.target;
 
@@ -140,7 +161,13 @@ $(document).ready(function() {
         if (currentMarker == null && feature.properties.Order == 1) {
             //assigns the current marker to the marker corresponding to the first city in the order (Rovinj)
             currentMarker = newMarker;
+            markerNum = i;
+            //currentMarker.setZIndexOffset(1000);
         };
+        
+        //add the marker to the array
+        markerArray.push(newMarker)
+        i ++;
         
         return newMarker;
     }; //end makeMarker
