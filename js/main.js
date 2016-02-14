@@ -113,6 +113,8 @@ $(document).ready(function() {
         //markerArray[oldMarker].setZIndexOffset(0);
         markerArray[markerNum].setIcon(selectedIcon);
         //markerArray[markerNum].setZIndexOffset(1000);
+        //sets the current marker
+        currentMarker = markerArray[markerNum];
         
     } //end update Marker
     
@@ -154,6 +156,9 @@ $(document).ready(function() {
             //currentMarker.setZIndexOffset(0);
             //assigns the currently selected marker as the one that was clicked
             currentMarker = e.target;
+            
+            //need to set the marker number on click, too. The marker number is one less than the order order in the list
+            markerNum = feature.properties.Order - 1;
 
         })
         
