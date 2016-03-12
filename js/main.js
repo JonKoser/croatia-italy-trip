@@ -5,6 +5,7 @@ $(document).ready(function() {
     var currentMarker; //the marker icon which is currently selected
     var markerArray = []; //collection of markers
     var markerNum; //number of the current marker in the marker array - starts at the first;
+    var imageArray = [] //array of image paths by city;
     
     //set the sizes and keep them up to date
     var h; //create the variable for height
@@ -45,11 +46,18 @@ $(document).ready(function() {
     //initialize fancybox lightbox
     $(".fancybox").fancybox();
     
+    //gets images JSON
+    $.getJSON("data/images.json").done(function(data) {
+        imagePaths = data.images;
+        
+    })
+    
     //use jquery to get the GeoJSON data and send it to be processed into a
     //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
 	//anonymous function to complete the process. Need to do this for L.geoJson to work
 	//(needs it processed into a collection of geoJSON features) if it failed, it'll excecute the alert    
 	$.getJSON("data/citrip.geojson").done(function(data) {
+        
         //for first load, set current city to Rovinj
         currentCity = 1;
         //create the city markers
@@ -69,8 +77,6 @@ $(document).ready(function() {
     
     //=============FUNCTIONS=====================//
     
-    //need to determine size of galleryContent based off of number of pictures
-    //need to dynamically load images into gallery
     
     function closeGallery() {
         $("#galleryButton").on("click", function () {
@@ -226,8 +232,26 @@ $(document).ready(function() {
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
         $("#sidebarContent").load("cities/" + cityID + ".html");
-        $("#galleryContent").load("cities/" + cityID + "-images.html");
+        //$("#galleryContent").load("cities/" + cityID + "-images.html");
         
+        //clear the existing html
+        $("#galleryContent").html("");
+        //gets the city's image file paths as an array - looks at the position in the cities array we are at and then drills down into the city
+        var images = imagePaths[currentCity-1][cityID];
+        
+        //on each element in the image paths array it adds a lightbox element
+        var numPics = 0; //number of pictures for the current city
+        $.each(images, function(index, data) {
+            var path = "<span><a class='fancybox' rel='group' href='" + data.path + "'><img class='gallery-image' src='" + data.path + "' alt='image' /></a></span>"
+            $("#galleryContent").append(path);
+            numPics ++;
+        })
+        
+        //updates the size of the galleryContent box based on how many picures there are (uses an average of 250 px width per picture)
+        var contentWidth = numPics*225;
+        $("#galleryContent").css("width", contentWidth);
+
+
     }//end update content
     
     
