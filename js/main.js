@@ -14,7 +14,7 @@ $(document).ready(function() {
     
     //set up a basic map window by selecting the "map" div element in index.html
 	var map = L.map("map", {
-		center: [44.5, 13.6],
+		center: [44.8, 15.3],
 		zoom: 7,
 		minZoom: 3
 	});
@@ -56,13 +56,14 @@ $(document).ready(function() {
         citiesArray = data.features;
         //set up the navigation
         navigate();
+        //load the sidebar content
+        updateContent();
         
 	}).fail(function() {alert ("There has been a problem loading the data.")}); 
     
     
     //=============FUNCTIONS=====================//
     
-    //creates the city array
 
     
     //adds event listeners for click the previous and next arrows
@@ -194,8 +195,12 @@ $(document).ready(function() {
         //select a feature to look at
         //does this based off of the current city number - 1 to equal the correct position in the cities array
         var feature = citiesArray[currentCity - 1]
+        //gets the name of the current city
+        var cityID = feature.properties.ID;
+        
         //updates the title text
-        $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");
+        $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
+        $("#sidebarContent").load("cities/" + cityID + ".html");
         
     }//end update content
     

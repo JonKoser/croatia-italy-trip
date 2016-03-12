@@ -1,3 +1,27 @@
+hr {
+    width: 95%;
+}
+
+.sidebarImage {
+    max-width: 95%;
+    height: auto;
+    width: auto\9;
+    margin-top: 15px
+}
+
+.sidebarImageSection {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sidebarTextSection {
+    text-align: justify;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+
 #topInfo {
     text-align: center;
     color: aliceblue;
@@ -5,19 +29,35 @@
 }
 
 #sidebar {
-    background-color: rgb(30, 30, 30);
-}
-
-#sidebarContent {
+    background-color: rgba(30, 30, 30,.8);
+    position: absolute;
+    width: 25%;
+    margin-left: 75%;
     overflow: scroll;
 }
 
+#sidebarContent {
+    color: aliceblue;
+}
+
 #map {
-    width: 75%;
-    float: left
+    width: 100%;
+    float: left;
 }
 
 .control:hover {
     cursor: pointer;
     color: darkorange
+}
+
+#titleText {
+    margin-bottom:5px;
+    margin-top:5px;
+    font-size: 14pt;
+    font-weight:400;
+}
+
+#controlTable {
+    text-align: center;
+    margin: 0 auto;
 }
