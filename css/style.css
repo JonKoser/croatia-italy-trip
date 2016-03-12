@@ -2,6 +2,20 @@ hr {
     width: 95%;
 }
 
+#gallery {
+    color:aliceblue;
+    width: 75%;
+    height: 175px;
+    position: absolute;
+    background-color: rgba(30, 30, 30,.8);
+    border-right: solid 1pt;
+}
+
+#galleryWrapper {
+    overflow-x: scroll;
+    overflow-y:hidden;
+}
+
 .sidebarImage {
     max-width: 95%;
     height: auto;
@@ -15,6 +29,15 @@ hr {
     margin-right: 10px;
 }
 
+.gallery-image {
+    height: 150px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    
+}
+
 .sidebarTextSection {
     text-align: justify;
     margin-left: 10px;
@@ -26,6 +49,11 @@ hr {
     text-align: center;
     color: aliceblue;
     padding-top: 10px;
+}
+
+#galleryBar {
+    text-align: center;
+    height: 20px;
 }
 
 #sidebar {

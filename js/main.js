@@ -42,6 +42,8 @@ $(document).ready(function() {
 			attribution: "Open Street Map Tiles" }).addTo(map);
     
 
+    //initialize fancybox lightbox
+    $(".fancybox").fancybox();
     
     //use jquery to get the GeoJSON data and send it to be processed into a
     //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
@@ -58,13 +60,36 @@ $(document).ready(function() {
         navigate();
         //load the sidebar content
         updateContent();
+        //sets up closing the gallery
+        closeGallery();
+    
         
 	}).fail(function() {alert ("There has been a problem loading the data.")}); 
     
     
     //=============FUNCTIONS=====================//
     
+    //need to determine size of galleryContent based off of number of pictures
+    //need to dynamically load images into gallery
+    
+    function closeGallery() {
+        $("#galleryButton").on("click", function () {
+            if ($("#gallery").css("height") == "175px"){
+                $("#gallery").css("height", "20px");
+                $("#gallery").css("margin-top", h-20);
+                $("#galleryContent").css("visibility", "hidden");
+                $(".gallery-image").css("display", "none");
+            }
+            else if ($("#gallery").css("height") == "20px") {
+                $("#gallery").css("height", "175px");
+                $("#gallery").css("margin-top", h-175);
+                $("#galleryContent").css("visibility", "visible");
+                $(".gallery-image").css("display", "inline-block");
+            }
 
+        })
+    }
+    
     
     //adds event listeners for click the previous and next arrows
     //so the main issue with this function is that it is dependent on the list being in order.
@@ -190,7 +215,7 @@ $(document).ready(function() {
         })
     }; //end onEachCity
     
-    //changes the sidebar content based on the current city
+    //changes the page content based on the current city
     function updateContent() {
         //select a feature to look at
         //does this based off of the current city number - 1 to equal the correct position in the cities array
@@ -201,6 +226,7 @@ $(document).ready(function() {
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
         $("#sidebarContent").load("cities/" + cityID + ".html");
+        $("#galleryContent").load("cities/" + cityID + "-images.html");
         
     }//end update content
     
@@ -210,6 +236,7 @@ $(document).ready(function() {
         h = window.innerHeight
         $("#map").css("height", h);
         $("#sidebar").css("height", h);
+        $("#gallery").css("margin-top", h-175)
     }
     
     
