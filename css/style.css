@@ -57,7 +57,7 @@ hr {
 }
 
 #sidebar {
-    background-color: rgba(30, 30, 30,.8);
+    background-color: rgba(30, 30, 30,.7);
     position: absolute;
     width: 25%;
     margin-left: 75%;
@@ -66,6 +66,13 @@ hr {
 
 #sidebarContent {
     color: aliceblue;
+}
+
+#dropdown {
+    position: absolute;
+    z-index: 1000;
+    margin-top: 10px;
+    margin-left: 50px;
 }
 
 #map {

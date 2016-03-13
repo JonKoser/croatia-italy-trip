@@ -3,22 +3,23 @@ $(document).ready(function() {
     var citiesArray = []; //collection of city layers
     var currentCity; //the order number of the currently selected city
     var currentMarker; //the marker icon which is currently selected
-    var markerArray = []; //collection of markers
+    var markerArray; //collection of markers in an array - used to add custom selected icons
     var markerNum; //number of the current marker in the marker array - starts at the first;
-    var imageArray = [] //array of image paths by city;
-    
+    var tripPath; //the locaiton of the data selected by which trip the user wants to see
+    var markers; //layer group containing marker layers - this is what gets added to the map
+    var markerCount = 0; //I suck, so here's a global iterator - number of markers currently on the map
+
     //set the sizes and keep them up to date
     var h; //create the variable for height
     resize();
     window.onresize = resize();
-    
+
     
     //set up a basic map window by selecting the "map" div element in index.html
 	var map = L.map("map", {
-		center: [44.8, 15.3],
-		zoom: 7,
 		minZoom: 3
 	});
+    
     
     //createes the "selected" icon
     var selectedIcon = L.icon({
@@ -46,37 +47,76 @@ $(document).ready(function() {
     //initialize fancybox lightbox
     $(".fancybox").fancybox();
     
-    //gets images JSON file and turns it into an array
-    $.getJSON("data/images.json").done(function(data) {
-        imagePaths = data.images;
-        
-    })
+    //lets people select which trip to look at
+    tripSelect();
+
+    //sets up closing the gallery
+    closeGallery();
     
-    //use jquery to get the GeoJSON data and send it to be processed into a
-    //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
-	//anonymous function to complete the process. Need to do this for L.geoJson to work
-	//(needs it processed into a collection of geoJSON features) if it failed, it'll excecute the alert    
-	$.getJSON("data/citrip.geojson").done(function(data) {
-        
-        //for first load, set current city to Rovinj
-        currentCity = 1;
-        //create the city markers
-        markCities(data);
-        //create an array of city features from the processed data - easier to access properties
-        citiesArray = data.features;
-        //set up the navigation
-        navigate();
-        //load the sidebar content
-        updateContent();
-        //sets up closing the gallery
-        closeGallery();
-    
-        
-	}).fail(function() {alert ("There has been a problem loading the data.")}); 
+    //set up the navigation
+    navigate();
     
     
     //=============FUNCTIONS=====================//
     
+    //loads the data for the selected trip
+    function loadTripData() {
+        
+        currentMarker = null; //makes sure that we start from scratch
+        markerCount = 0; //make sure that we start from scratch
+      
+        //gets images JSON file and turns it into an array
+        $.getJSON("data/" + tripPath + "/images.json").done(function(data) {
+            imagePaths = data.images;
+
+        })
+
+        //use jquery to get the GeoJSON data and send it to be processed into a
+        //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
+        //anonymous function to complete the process. Need to do this for L.geoJson to work
+        //(needs it processed into a collection of geoJSON features) if it failed, it'll excecute the alert    
+        $.getJSON("data/" + tripPath + "/coords.geojson").done(function(data) {
+            
+
+            //for first load, set current city to the first city
+            currentCity = 1;
+            //create the city markers
+            markCities(data);
+            //create an array of city features from the processed data - easier to access properties
+            citiesArray = data.features;
+            //load the sidebar content
+            updateContent();
+
+
+
+        }).fail(function() {alert ("There has been a problem loading the data.")}); 
+    }
+    
+    //selects which trip path is going to be used
+    function tripSelect() {
+        var center = L.latLng(44.8, 15.3); //the center of the map - set at Croatia's initially
+        var zoom = 7; //the desired zoom level - set at 7 initially
+        tripPath = "Croatia" //initially sets the path to Croatia
+        //adds an event listener for when the trip is changed
+        $("#dropdown").on("change", function () {
+            var selectedTrip = $("#dropdown").val();
+            switch (selectedTrip) {
+                case "Croatia": center = L.latLng(44.8, 15.3);
+                    tripPath = "Croatia";
+                    zoom = 7;
+                    break;
+                case "China": center = L.latLng(13,115);
+                    tripPath = "China";
+                    zoom = 4;
+                    break;
+            }
+            
+            map.setView(center,zoom)
+            loadTripData();
+        })
+        map.setView(center, zoom)
+        loadTripData();
+    }
     
     function closeGallery() {
         $("#galleryButton").on("click", function () {
@@ -104,7 +144,7 @@ $(document).ready(function() {
     function navigate() {
         var newCity; //the updated city number
         var oldMarker; //the old marker number
-        var oldZ; //the old Z value
+        //var oldZ; //the old Z value
         //for clicking the previous arrow
         $("#previous").on("click", function (e) {
             newCity = currentCity - 1;
@@ -152,20 +192,22 @@ $(document).ready(function() {
     
     //adds the cities markers to the map
     function markCities(data) {
+        markerArray = [];
+        if (markers != null) {
+            markers.clearLayers();
+        }
         //create the cities layers
         var cities = L.geoJson(data, {
             onEachFeature: onEachCity,
             pointToLayer: makeMarker
             
-        }).addTo(map) //.on("click", function (e) {
-            //$("#titleText").text(" " + e.layer.feature.properties.Order + ". " + e.layer.feature.properties.City + " ");
-        //}).addTo(map);  
+        })
+        markers = L.layerGroup(markerArray).addTo(map);
 
         
     }; //end markCities function
     
     //creates the markers
-    var i = 0; //I suck, so here's a global iterator for the following function because scope is annoying, haha
     function makeMarker(feature, latlng) {   
         //gives Rovinj a red marker to begin with
         var useIcon;
@@ -188,7 +230,6 @@ $(document).ready(function() {
             //currentMarker.setZIndexOffset(0);
             //assigns the currently selected marker as the one that was clicked
             currentMarker = e.target;
-            
             //need to set the marker number on click, too. The marker number is one less than the order order in the list
             markerNum = feature.properties.Order - 1;
 
@@ -198,13 +239,13 @@ $(document).ready(function() {
         if (currentMarker == null && feature.properties.Order == 1) {
             //assigns the current marker to the marker corresponding to the first city in the order (Rovinj)
             currentMarker = newMarker;
-            markerNum = i;
+            markerNum = markerCount;
             //currentMarker.setZIndexOffset(1000);
         };
         
         //add the marker to the array
         markerArray.push(newMarker)
-        i ++;
+        markerCount ++;
         
         return newMarker;
     }; //end makeMarker
@@ -212,9 +253,7 @@ $(document).ready(function() {
     
     //for each feature
     function onEachCity(feature, layer) {
-        //binds the popup
-        //layer.bindPopup(feature.properties.City);
-        //function for every time a city is clicked - could replace the .on in markCities
+        //function for every time a city is clicked
         layer.on("click", function (e) {
             currentCity = feature.properties.Order;
             updateContent();
@@ -231,8 +270,7 @@ $(document).ready(function() {
         
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
-        $("#sidebarContent").load("cities/" + cityID + ".html");
-        //$("#galleryContent").load("cities/" + cityID + "-images.html");
+        $("#sidebarContent").load("cities/" + tripPath + "/" + cityID + ".html");
         
         //clear the existing html
         $("#galleryContent").html("");
@@ -242,7 +280,7 @@ $(document).ready(function() {
         //on each element in the image paths array it adds a lightbox element
         var numPics = 0; //number of pictures for the current city
         $.each(images, function(index, data) {
-            var path = "<span><a class='fancybox' rel='group' href='" + data.path + "'><img class='gallery-image' src='" + data.path + "' alt='image' /></a></span>"
+            var path = "<span><a class='fancybox' rel='group' href='img/" + tripPath + "/" + data.path + "'><img class='gallery-image' src='img/" + tripPath + "/" + data.path + "' alt='image' /></a></span>"
             $("#galleryContent").append(path);
             numPics ++;
         })
