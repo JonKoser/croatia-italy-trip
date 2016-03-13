@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>My Travels</title>
+        <title>Voyager - My Travels</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="An interactive map of my travels around the world">
@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
         <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 
         <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,17 +27,20 @@
 
     <body>
         <div id="wrapper">
-                        <select id="dropdown">
-                <option value="Croatia">Croatia + Italy</option>
-                <option value="China">China + Thailand</option>
-            </select>
             <div id="map"></div>
-
-                        <select id="dropdown">
+            <select id="dropdown">
                 <option value="Croatia">Croatia + Italy</option>
                 <option value="China">China + Thailand</option>
             </select>
-            <div id="sidebar">
+            
+            <div class="panel" id="gallery">
+                <div id="galleryBar"><span id="galleryButton" class="control fa fa-bars"></span></div>
+                <div id="galleryWrapper">
+                    <div id="galleryContent">
+                    </div>
+                </div>
+            </div> <!-- end gallery -->
+            <div class="panel" id="sidebar">
                 <div id="topInfo">
                     
                     <table id="controlTable">
@@ -51,14 +55,6 @@
                 <hr>
                 <div id="sidebarContent"></div>  
             </div> <!-- end sidebare -->
-            
-            <div id="gallery">
-                <div id="galleryBar"><span id="galleryButton" class="control fa fa-bars"></span></div>
-                <div id="galleryWrapper">
-                    <div id="galleryContent">
-                    </div>
-                </div>
-            </div> <!-- end gallery -->
 
         
         </div> <!--end wrapper-->

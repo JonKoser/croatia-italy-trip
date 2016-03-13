@@ -1,14 +1,14 @@
 hr {
     width: 95%;
 }
-
+.panel {
+    color: aliceblue;
+    background-color: rgba(30, 30, 30, 0.75);
+}
 #gallery {
-    color:aliceblue;
     width: 75%;
     height: 175px;
     position: absolute;
-    background-color: rgba(30, 30, 30,.8);
-    border-right: solid 1pt;
 }
 
 #galleryWrapper {
@@ -47,7 +47,6 @@ hr {
 
 #topInfo {
     text-align: center;
-    color: aliceblue;
     padding-top: 10px;
 }
 
@@ -57,16 +56,13 @@ hr {
 }
 
 #sidebar {
-    background-color: rgba(30, 30, 30,.7);
     position: absolute;
     width: 25%;
     margin-left: 75%;
     overflow: scroll;
+    border-left: solid 1pt;
 }
 
-#sidebarContent {
-    color: aliceblue;
-}
 
 #dropdown {
     position: absolute;
