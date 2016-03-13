@@ -46,7 +46,7 @@ $(document).ready(function() {
     //initialize fancybox lightbox
     $(".fancybox").fancybox();
     
-    //gets images JSON
+    //gets images JSON file and turns it into an array
     $.getJSON("data/images.json").done(function(data) {
         imagePaths = data.images;
         
@@ -250,6 +250,14 @@ $(document).ready(function() {
         //updates the size of the galleryContent box based on how many picures there are (uses an average of 250 px width per picture)
         var contentWidth = numPics*225;
         $("#galleryContent").css("width", contentWidth);
+        
+        //if there aren't any pictures for a city, will not show the gallery bar
+        if (numPics == 0) {
+            $("#gallery").css("visibility", "hidden");
+        }
+        else {
+            $("#gallery").css("visibility", "visible");
+        }
 
 
     }//end update content
