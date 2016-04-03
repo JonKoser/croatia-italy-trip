@@ -59,7 +59,7 @@ hr {
     position: absolute;
     width: 25%;
     margin-left: 75%;
-    overflow: scroll;
+    overflow-y: scroll;
     border-left: solid 1pt;
 }
 
@@ -67,8 +67,8 @@ hr {
 #dropdown {
     position: absolute;
     z-index: 1000;
-    margin-top: 10px;
-    margin-left: 50px;
+    top: 18px;
+    left: 50px;
 }
 
 #map {
@@ -79,6 +79,10 @@ hr {
 .control:hover {
     cursor: pointer;
     color: darkorange
+}
+
+.leaflet-container .leaflet-control-attribution {
+    visibility: hidden;
 }
 
 #titleText {

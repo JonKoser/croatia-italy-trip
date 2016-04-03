@@ -303,7 +303,7 @@ $(document).ready(function() {
     
     //resizes the elements based off of screen height
     function resize() {
-        h = window.innerHeight
+        h = window.innerHeight - 25
         $("#map").css("height", h);
         $("#sidebar").css("height", h);
         $("#gallery").css("margin-top", h-175)
