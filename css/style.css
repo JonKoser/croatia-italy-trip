@@ -16,6 +16,18 @@ hr {
     overflow-y:hidden;
 }
 
+.ui-accordion {
+    margin-left: 5px;
+}
+
+.ui-accordion .ui-accordion-content{
+    padding: 10px;
+}
+
+.ui-accordion-content p {
+    margin: 0px;
+}
+
 .sidebarImage {
     max-width: 95%;
     height: auto;
