@@ -11,8 +11,8 @@ $(document).ready(function() {
 
     //set the sizes and keep them up to date
     var h; //create the variable for height
-    resize();
-    window.onresize = resize();
+    resize(); //call it once to get initial sizes
+    window.onresize = resize(); //call it whenever the window resizes
 
     
     //set up a basic map window by selecting the "map" div element in index.html
@@ -40,8 +40,8 @@ $(document).ready(function() {
     
     //identify which tile layer to use and then add it to the map
 	L.tileLayer(
-		'http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
-			attribution: "Open Street Map Tiles" }).addTo(map);
+		'https://api.mapbox.com/styles/v1/jkoser/cio79mjga000maem582l5vmrw/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiamtvc2VyIiwiYSI6ImNpbWtxNTg2NzAxNGl2cGtnY3k1dGU3aXEifQ.VbZ8l9bL6wsh8dgaI8gTuw', {
+			attribution: 'Custom map layer made using MapBox Studio by Jon Koser' }).addTo(map);
     
 
     //initialize fancybox lightbox
@@ -121,12 +121,12 @@ $(document).ready(function() {
     function closeGallery() {
         $("#galleryButton").on("click", function () {
             if ($("#gallery").css("height") == "175px"){
-                $("#gallery").css("height", "20px");
-                $("#gallery").css("margin-top", h-20);
+                $("#gallery").css("height", "30px");
+                $("#gallery").css("margin-top", h-30);
                 $("#galleryContent").css("visibility", "hidden");
                 $(".gallery-image").css("display", "none");
             }
-            else if ($("#gallery").css("height") == "20px") {
+            else if ($("#gallery").css("height") == "30px") {
                 $("#gallery").css("height", "175px");
                 $("#gallery").css("margin-top", h-175);
                 $("#galleryContent").css("visibility", "visible");
@@ -303,7 +303,7 @@ $(document).ready(function() {
     
     //resizes the elements based off of screen height
     function resize() {
-        h = window.innerHeight - 25
+        h = window.innerHeight
         $("#map").css("height", h);
         $("#sidebar").css("height", h);
         $("#gallery").css("margin-top", h-175)

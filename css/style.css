@@ -1,10 +1,13 @@
-hr {
-    width: 95%;
+body {
+    margin: 0;
 }
+
 .panel {
     color: aliceblue;
-    background-color: rgba(30, 30, 30, 0.75);
+    background-color: rgba(30, 30, 30, 0.8);
+    margin: 0;
 }
+
 #gallery {
     width: 75%;
     height: 175px;
@@ -73,6 +76,7 @@ hr {
     margin-left: 75%;
     overflow-y: scroll;
     border-left: solid 1pt;
+    border-left-color: black;
 }
 
 
@@ -84,8 +88,8 @@ hr {
 }
 
 #map {
+    position: absolute;
     width: 100%;
-    float: left;
 }
 
 .control:hover {
