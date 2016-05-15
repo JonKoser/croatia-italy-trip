@@ -336,7 +336,7 @@ $(document).ready(function() {
             active: false
         }); 
         
-    }
+    } //end turn on accordion
     
     //returns the city object containing image paths and journal entries based off of the city ID
     function findCityInfoObject (cityID) {
