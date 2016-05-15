@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="css/style.css">
 
-
         <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 
         <!--[if lt IE 9]>
@@ -54,7 +53,12 @@
                     
                 </div>
                 <hr>
-                <div id="sidebarContent"></div>  
+                <div id="sidebarContent">
+                    <div id="sidebarImageSection"></div>
+                    <div id="sidebarTextSection">
+                        <div id="accordion"></div>
+                    </div>
+                </div>  
             </div> <!-- end sidebare -->
 
         
@@ -67,11 +71,6 @@
 		<script src="js/leaflet.js"></script>
 		<script src="js/main.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script>
-        $(function() {
-            $( "#accordion" ).accordion();
-        });
-        </script>
         <script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
         <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
         <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>

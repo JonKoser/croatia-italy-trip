@@ -8,7 +8,7 @@ $(document).ready(function() {
     var tripPath; //the locaiton of the data selected by which trip the user wants to see
     var markers; //layer group containing marker layers - this is what gets added to the map
     var markerCount = 0; //I suck, so here's a global iterator - number of markers currently on the map
-
+        
     //set the sizes and keep them up to date
     var h; //create the variable for height
     resize(); //call it once to get initial sizes
@@ -65,11 +65,12 @@ $(document).ready(function() {
         currentMarker = null; //makes sure that we start from scratch
         markerCount = 0; //make sure that we start from scratch
       
-        //gets images JSON file and turns it into an array
-        $.getJSON("data/" + tripPath + "/images.json").done(function(data) {
-            imagePaths = data.images;
-
+        
+        //json containing city info and image paths
+        $.getJSON("data/" + tripPath + "/content.json").done(function(data) {
+            citiesInfo = data.cities;
         })
+        
 
         //use jquery to get the GeoJSON data and send it to be processed into a
         //Feature Collection Object called "data." This object is then passed to the .done method to be used in the 
@@ -260,6 +261,7 @@ $(document).ready(function() {
         })
     }; //end onEachCity
     
+    
     //changes the page content based on the current city
     function updateContent() {
         //select a feature to look at
@@ -268,14 +270,25 @@ $(document).ready(function() {
         //gets the name of the current city
         var cityID = feature.properties.ID;
         
+        //gets all the info and image paths on the city
+        var cityInfo = findCityInfoObject(cityID)
+        
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
-        $("#sidebarContent").load("cities/" + tripPath + "/" + cityID + ".html");
+        //$("#sidebarContent").load("cities/" + tripPath + "/" + cityID + ".html");
         
         //clear the existing html
         $("#galleryContent").html("");
-        //gets the city's image file paths as an array - looks at the position in the cities array we are at and then drills down into the city
-        var images = imagePaths[currentCity-1][cityID];
+
+        //gets the image paths from the cityInfo json object
+        var images = cityInfo.images
+
+        //clear the existing image
+        $("#sidebarImageSection").html("")
+        //inserts the city cover image
+        $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + images[0].path + ">")
+        
+        createAccordion(cityInfo);
         
         //on each element in the image paths array it adds a lightbox element
         var numPics = 0; //number of pictures for the current city
@@ -299,7 +312,42 @@ $(document).ready(function() {
 
 
     }//end update content
+
+    //creates the accordion in the sidebar
+    function createAccordion(cityInfo) {
+        //clear the current accordion
+        $("#accordion").html("");
+        
+        var cityContent = cityInfo.content
+        for (var i = 0; i < cityContent.length; i++) {
+            $("#accordion").append("<h3>" + cityContent[i].date + "</h3>")
+            $("#accordion").append("<div>" + cityContent[i].info + "</div>")
+        }
+        
+        turnOnAccordion();
+        
+    } //end create accordion
     
+    //turns on the accordion
+    function turnOnAccordion() {
+        $( "#accordion" ).accordion({
+            collapsible: true,
+            heightStyle: "content",
+            active: false
+        }); 
+        
+    }
+    
+    //returns the city object containing image paths and journal entries based off of the city ID
+    function findCityInfoObject (cityID) {
+        var cityInfoObj
+        for (var i = 0; i < citiesInfo.length; i++) {
+            if (cityID == citiesInfo[i].cityID) {
+                cityInfoObj = citiesInfo[i];
+                return cityInfoObj;
+            }
+        }
+    } //end find city info objct
     
     //resizes the elements based off of screen height
     function resize() {
