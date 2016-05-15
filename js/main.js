@@ -56,6 +56,10 @@ $(document).ready(function() {
     //set up the navigation
     navigate();
     
+    //initialized the accordion
+    setUpAccordion();
+    
+    
     
     //=============FUNCTIONS=====================//
     
@@ -275,7 +279,6 @@ $(document).ready(function() {
         
         //updates the title text
         $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");                
-        //$("#sidebarContent").load("cities/" + tripPath + "/" + cityID + ".html");
         
         //clear the existing html
         $("#galleryContent").html("");
@@ -285,10 +288,11 @@ $(document).ready(function() {
 
         //clear the existing image
         $("#sidebarImageSection").html("")
-        //inserts the city cover image
+        //inserts the city cover image - the first one for that city
         $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + images[0].path + ">")
         
-        createAccordion(cityInfo);
+        //puts the correct info in the accordion
+        updateAccordion(cityInfo);
         
         //on each element in the image paths array it adds a lightbox element
         var numPics = 0; //number of pictures for the current city
@@ -314,7 +318,7 @@ $(document).ready(function() {
     }//end update content
 
     //creates the accordion in the sidebar
-    function createAccordion(cityInfo) {
+    function updateAccordion(cityInfo) {
         //clear the current accordion
         $("#accordion").html("");
         
@@ -323,20 +327,21 @@ $(document).ready(function() {
             $("#accordion").append("<h3>" + cityContent[i].date + "</h3>")
             $("#accordion").append("<div>" + cityContent[i].info + "</div>")
         }
-        
-        turnOnAccordion();
+    
+        //need to refresh the accordion with the new data since the DOM changed
+        $("#accordion").accordion('refresh');
         
     } //end create accordion
     
-    //turns on the accordion
-    function turnOnAccordion() {
+    //initializes the accordion
+    function setUpAccordion() {
         $( "#accordion" ).accordion({
             collapsible: true,
             heightStyle: "content",
             active: false
-        }); 
+        }).accordion('refresh'); 
         
-    } //end turn on accordion
+    } //end set up accordion
     
     //returns the city object containing image paths and journal entries based off of the city ID
     function findCityInfoObject (cityID) {
