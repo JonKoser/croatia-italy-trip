@@ -285,25 +285,27 @@ $(document).ready(function() {
 
         //gets the image paths from the cityInfo json object
         var images = cityInfo.images
+        var cityName = cityInfo.name
 
         //clear the existing image
         $("#sidebarImageSection").html("")
         //inserts the city cover image - the first one for that city
-        $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + images[0].path + ">")
+        $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + cityInfo.name + "/" + images[0].path + ">")
         
         //puts the correct info in the accordion
         updateAccordion(cityInfo);
         
+        
         //on each element in the image paths array it adds a lightbox element
         var numPics = 0; //number of pictures for the current city
         $.each(images, function(index, data) {
-            var path = "<span><a class='fancybox' rel='group' href='img/" + tripPath + "/" + data.path + "'><img class='gallery-image' src='img/" + tripPath + "/" + data.path + "' alt='image' /></a></span>"
+            var path = "<span><a class='fancybox' rel='group' href='img/" + tripPath + "/" + cityName + "/" + data.path + "'><img class='gallery-image' src='img/" + tripPath + "/" + cityName + "/" + data.path + "' alt='image' /></a></span>"
             $("#galleryContent").append(path);
             numPics ++;
         })
         
         //updates the size of the galleryContent box based on how many picures there are (uses an average of 250 px width per picture)
-        var contentWidth = numPics*225;
+        var contentWidth = numPics*175;
         $("#galleryContent").css("width", contentWidth);
         
         //if there aren't any pictures for a city, will not show the gallery bar
