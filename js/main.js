@@ -304,8 +304,8 @@ $(document).ready(function() {
             numPics ++;
         })
         
-        //updates the size of the galleryContent box based on how many picures there are (uses an average of 250 px width per picture)
-        var contentWidth = numPics*175;
+        //updates the size of the galleryContent box based on how many picures there are (uses an average of 185 px width per picture)
+        var contentWidth = numPics*185;
         $("#galleryContent").css("width", contentWidth);
         
         //if there aren't any pictures for a city, will not show the gallery bar
