@@ -289,8 +289,10 @@ $(document).ready(function() {
 
         //clear the existing image
         $("#sidebarImageSection").html("")
-        //inserts the city cover image - the first one for that city
-        $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + cityInfo.name + "/" + images[0].path + ">")
+        //inserts the city cover image - the first one for that city - if any exist
+        if (images.length > 0) {
+            $("#sidebarImageSection").html("<img id='sidebarImage' src=./img/" + tripPath + "/" + cityInfo.name + "/" + images[0].path + ">")
+        }
         
         //puts the correct info in the accordion
         updateAccordion(cityInfo);
