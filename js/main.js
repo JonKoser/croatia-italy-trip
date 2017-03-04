@@ -114,6 +114,10 @@ $(document).ready(function() {
                     tripPath = "China";
                     zoom = 4;
                     break;
+                case "Honeymoon": center = L.latLng(52,-2);
+                    tripPath = "Honeymoon"
+                    zoom = 4;
+                    break;
             }
             
             map.setView(center,zoom)
