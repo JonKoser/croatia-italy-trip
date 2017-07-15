@@ -1,72 +1,27 @@
 {
     "cities": [
         {
-            "cityID": "c0",
-            "name": "Rovinj",
+            "cityID": "h0",
+            "name": "Reykjavik",
             "content": [
                 {
-                    "date": "May 20th, 2013",
-                    "info": "Written May 21st - This is the second day here and my God has it been a ride. Let me start with the trip here. I didn't get to writing last night; you'll understand why. I've never been abroad before so this is quite an exciting adventure for me. The plane from Chicago to Frankfurt went well (the food was terrible though) but was rather boring and cloudy. It was only on the flight to Munich that I really got a sense that we were even in Europe. After emerging from the cloudy gloom of Frankfurt, it was an amazing sight to see the German countryside with the round farm plot arrangements of dark green, brown, light green, and bright yellow -from the rapeseed crops. The small clustered villages all with uniform rooms reminded one of a medieval landscape, not the monotonous and ordered grid that makes up the ground cover of the United States. The flight out of Munich to Trieste was the best though. We boarded a small turbo-prop plane and that short one hour flight was the best traveling experience I've ever had. It was the moment, after 15 hours of travel, that it really hit me that I was an entire ocean away from all the things I had ever known. This was Europe. Riding this tiny plane south over the Italian alps while drinking white wine and listening to Claire de Lune played by Michael Belamy of Muse was was an absolutely ethereal experience; I was in heaven. Unfortunately, that all ended at the Trieste airport. To make the dull matter short, the group that did arrive on time for our shuttle had to wait six hours for the others. We were in that dinky little airport from 12:35 until 7:00 PM. Finally though, we started off toward Rovinj. It was a beautiful drive and once we arrived, we were able to eat an amazing amount of food before finally going to bed."
+                    "date": "1-2-2014",
+                    "info": "All my content would go here - this would be the post."
                 },
                 {
-                    "date": "May 21st, 2013",
-                    "info": "Here is where the stuff that concerns Toma starts! Today we got a tour of the city of Rovinj. What a beautiful, romantic, and charming place! It is clearly fueled by tourism but it is amazingly not ruined by it. The architecture and even the stones beneath your feet remind you a the city's long history and Italian influence. It is a place both old (ancient even) and new. It hasn't had its identity changed through its long history but rather added on to (or at least that's my initial impression). It doesn't feel like a place that really belongs to any particular nationality - there is significant Croatian pride and language, obvious Italian influences, and many German tourists. The people are extremely friendly; even more important because they have to deal with our loud, English-only group! I understand that this is a tourist town but they really do a good job. It was an interesting experience trying to communicate, too. Most people spoke pretty decent English. However, there were the occasions I could only reply with rudimentary Croatian phrases like 'Dobar dan,' 'hvala,' and 'da.' Really, it was kind of fun and they seemed to appreciate the effort. For instance, I was talking with Domagoj and before he left I just said 'videmo se kasnije' and he seemed truly and pleasantly surprised. Most of my day consisted just of exploring the area, from the old city to the forested beaches along the Adriatic. It is a sublime landscape and I'm very excited to get to know it better over the next month."
+                    "date": "1-3-2014",
+                    "info": "Here is another day worth of stuff. These sections would get quite long"
                 }
                 
             ],
             "images": [
                 {"path": "Rovinj_1.jpg"},
-                {"path": "Rovinj_alley.jpg"},
-                {"path": "4.jpg"},
-                {"path": "6.jpg"},
-                {"path": "8.jpg"},
-                {"path": "9.jpg"},
-                {"path": "10.jpg"},
-                {"path": "11.jpg"},
-                {"path": "12.jpg"},
-                {"path": "13.jpg"},
-                {"path": "14.jpg"},
-                {"path": "17.jpg"},
-                {"path": "18.jpg"},
-                {"path": "21.jpg"},
-                {"path": "22.jpg"},
-                {"path": "23.jpg"},
-                {"path": "27.jpg"},
-                {"path": "28.jpg"},
-                {"path": "29.jpg"},
-                {"path": "31.jpg"},
-                {"path": "32.jpg"},
-                {"path": "33.jpg"},
-                {"path": "39.jpg"},
-                {"path": "42.jpg"},
-                {"path": "104.jpg"},
-                {"path": "107.jpg"},
-                {"path": "108.jpg"},
-                {"path": "109.jpg"},
-                {"path": "110.jpg"},
-                {"path": "111.jpg"},
-                {"path": "112.jpg"},
-                {"path": "113.jpg"},
-                {"path": "117.jpg"},
-                {"path": "118.jpg"},
-                {"path": "172.jpg"},
-                {"path": "174.jpg"},
-                {"path": "175.jpg"},
-                {"path": "177.jpg"},
-                {"path": "178.jpg"},
-                {"path": "210.jpg"},
-                {"path": "211.jpg"},
-                {"path": "212.jpg"},
-                {"path": "288.jpg"},
-                {"path": "289.jpg"},
-                {"path": "291.jpg"},
-                {"path": "297.jpg"}
-                
+                {"path": "Rovinj_alley.jpg"}
             ]
         },
         {
-            "cityID": "c1",
-            "name": "Plitvice",
+            "cityID": "a1",
+            "name": "Hangzhou",
             "content": [
                 {
                     "date": "1-4-2014",
@@ -78,63 +33,12 @@
                 }
             ],
             "images": [
-                {"path": "46.jpg"},
-                {"path": "48.jpg"},
-                {"path": "49.jpg"},
-                {"path": "52.jpg"},
-                {"path": "53.jpg"},
-                {"path": "54.jpg"},
-                {"path": "55.jpg"},
-                {"path": "58.jpg"},
-                {"path": "60.jpg"},
-                {"path": "61.jpg"},
-                {"path": "62.jpg"},
-                {"path": "63.jpg"},
-                {"path": "64.jpg"},
-                {"path": "65.jpg"},
-                {"path": "67.jpg"},
-                {"path": "69.jpg"},
-                {"path": "70.jpg"},
-                {"path": "71.jpg"},
-                {"path": "72.jpg"},
-                {"path": "73.jpg"},
-                {"path": "74.jpg"},
-                {"path": "75.jpg"},
-                {"path": "76.jpg"},
-                {"path": "77.jpg"},
-                {"path": "79.jpg"},
-                {"path": "80.jpg"},
-                {"path": "81.jpg"},
-                {"path": "82.jpg"},
-                {"path": "83.jpg"},
-                {"path": "84.jpg"},
-                {"path": "85.jpg"},
-                {"path": "86.jpg"},
-                {"path": "87.jpg"},
-                {"path": "88.jpg"},
-                {"path": "89.jpg"},
-                {"path": "90.jpg"},
-                {"path": "92.jpg"},
-                {"path": "93.jpg"},
-                {"path": "95.jpg"},
-                {"path": "97.jpg"},
-                {"path": "98.jpg"},
-                {"path": "99.jpg"},
-                {"path": "121.jpg"},
-                {"path": "122.jpg"},
-                {"path": "123.jpg"},
-                {"path": "124.jpg"},
-                {"path": "125.jpg"},
-                {"path": "126.jpg"},
-                {"path": "127.jpg"},
-                {"path": "129.jpg"},
-                {"path": "131.jpg"},
-                {"path": "132.jpg"}
+                {"path": "Rovinj_1.jpg"}
             ]
         },
         {
-            "cityID": "c2",
-            "name": "Senj",
+            "cityID": "a2",
+            "name": "Huangshan",
             "content": [
                 {
                     "date": "1-2-2014",
@@ -147,17 +51,13 @@
                 
             ],
             "images": [
-                {"path": "100.jpg"},
-                {"path": "101.jpg"},
-                {"path": "102.jpg"},
-                {"path": "103.jpg"},
-                {"path": "120.jpg"},
-                {"path": "133.jpg"}
+                {"path": "Rovinj_1.jpg"},
+                {"path": "Rovinj_alley.jpg"}
             ]
         },
         {
-            "cityID": "c3",
-            "name": "Venice",
+            "cityID": "a3",
+            "name": "Zhangjiajie",
             "content": [
                 {
                     "date": "1-4-2014",
@@ -169,30 +69,12 @@
                 }
             ],
             "images": [
-                {"path": "142.jpg"},
-                {"path": "144.jpg"},
-                {"path": "151.jpg"},
-                {"path": "152.jpg"},
-                {"path": "153.jpg"},
-                {"path": "154.jpg"},
-                {"path": "155.jpg"},
-                {"path": "156.jpg"},
-                {"path": "159.jpg"},
-                {"path": "160.jpg"},
-                {"path": "162.jpg"},
-                {"path": "163.jpg"},
-                {"path": "164.jpg"},
-                {"path": "166.jpg"},
-                {"path": "169.jpg"},
-                {"path": "171.jpg"},
-                {"path": "213.jpg"},
-                {"path": "215.jpg"},
-                {"path": "216.jpg"}
+                {"path": "Rovinj_1.jpg"}
             ]
         },
         {
-            "cityID": "c4",
-            "name": "Pula",
+            "cityID": "a4",
+            "name": "Yangshuo",
             "content": [
                 {
                     "date": "1-2-2014",
@@ -205,16 +87,13 @@
                 
             ],
             "images": [
-                {"path": "181.jpg"},
-                {"path": "182.jpg"},
-                {"path": "185.jpg"},
-                {"path": "217.jpg"},
-                {"path": "218.jpg"}
+                {"path": "Rovinj_1.jpg"},
+                {"path": "Rovinj_alley.jpg"}
             ]
         },
         {
-            "cityID": "c5",
-            "name": "Vodnjan",
+            "cityID": "a5",
+            "name": "Lijiang",
             "content": [
                 {
                     "date": "1-4-2014",
@@ -226,13 +105,12 @@
                 }
             ],
             "images": [
-                {"path": "190.jpg"},
-                {"path": "191.jpg"}
+                {"path": "Rovinj_1.jpg"}
             ]
         },
         {
-            "cityID": "c6",
-            "name": "Bale",
+            "cityID": "a6",
+            "name": "Chiang Mai",
             "content": [
                 {
                     "date": "1-2-2014",
@@ -245,11 +123,13 @@
                 
             ],
             "images": [
+                {"path": "Rovinj_1.jpg"},
+                {"path": "Rovinj_alley.jpg"}
             ]
         },
         {
-            "cityID": "c7",
-            "name": "Dvigrad",
+            "cityID": "a7",
+            "name": "Krabi",
             "content": [
                 {
                     "date": "1-4-2014",
@@ -261,25 +141,12 @@
                 }
             ],
             "images": [
-                {"path": "193.jpg"},
-                {"path": "194.jpg"},
-                {"path": "195.jpg"},
-                {"path": "197.jpg"},
-                {"path": "198.jpg"},
-                {"path": "199.jpg"},
-                {"path": "201.jpg"},
-                {"path": "202.jpg"},
-                {"path": "203.jpg"},
-                {"path": "204.jpg"},
-                {"path": "205.jpg"},
-                {"path": "208.jpg"},
-                {"path": "209.jpg"},
-                {"path": "219.jpg"}
+                {"path": "Rovinj_1.jpg"}
             ]
         },
         {
-            "cityID": "c8",
-            "name": "Zagreb",
+            "cityID": "a8",
+            "name": "Koh Phi Phi",
             "content": [
                 {
                     "date": "1-2-2014",
@@ -292,31 +159,13 @@
                 
             ],
             "images": [
-                {"path": "221.jpg"},
-                {"path": "222.jpg"},
-                {"path": "224.jpg"},
-                {"path": "225.jpg"},
-                {"path": "226.jpg"},
-                {"path": "229.jpg"},
-                {"path": "231.jpg"},
-                {"path": "232.jpg"},
-                {"path": "236.jpg"},
-                {"path": "239.jpg"},
-                {"path": "245.jpg"},
-                {"path": "246.jpg"},
-                {"path": "247.jpg"},
-                {"path": "248.jpg"},
-                {"path": "249.jpg"},
-                {"path": "250.jpg"},
-                {"path": "256.jpg"},
-                {"path": "257.jpg"},
-                {"path": "258.jpg"},
-                {"path": "259.jpg"}
+                {"path": "Rovinj_1.jpg"},
+                {"path": "Rovinj_alley.jpg"}
             ]
         },
         {
-            "cityID": "c9",
-            "name": "Porec",
+            "cityID": "a9",
+            "name": "Phuket",
             "content": [
                 {
                     "date": "1-4-2014",
@@ -328,235 +177,7 @@
                 }
             ],
             "images": [
-                {"path": "188.jpg"},
-                {"path": "189.jpg"},
-                {"path": "260.jpg"},
-                {"path": "161.jpg"},
-                {"path": "262.jpg"},
-                {"path": "263.jpg"},
-                {"path": "264.jpg"},
-                {"path": "265.jpg"},
-                {"path": "266.jpg"},
-                {"path": "267.jpg"},
-                {"path": "268.jpg"},
-                {"path": "269.jpg"},
-                {"path": "189.jpg"}
-            ]
-        },
-        {
-            "cityID": "c10",
-            "name": "Motovun",
-            "content": [
-                {
-                    "date": "1-2-2014",
-                    "info": "All my content would go here - this would be the post."
-                },
-                {
-                    "date": "1-3-2014",
-                    "info": "Here is another day worth of stuff. These sections would get quite long"
-                }
-                
-            ],
-            "images": [
-                {"path": "270.jpg"},
-                {"path": "273.jpg"},
-                {"path": "274.jpg"},
-                {"path": "275.jpg"},
-                {"path": "277.jpg"},
-                {"path": "302.jpg"}
-            ]
-        },
-        {
-            "cityID": "c11",
-            "name": "Kotle",
-            "content": [
-                {
-                    "date": "1-4-2014",
-                    "info": "More content!"
-                },
-                {
-                    "date": "1-5-2014",
-                    "info": "Stuff stuff stuff!"
-                }
-            ],
-            "images": [
-                {"path": "283.jpg"},
-                {"path": "287.jpg"}
-            ]
-        },
-        {
-            "cityID": "c12",
-            "name": "Hum",
-            "content": [
-                {
-                    "date": "1-2-2014",
-                    "info": "All my content would go here - this would be the post."
-                },
-                {
-                    "date": "1-3-2014",
-                    "info": "Here is another day worth of stuff. These sections would get quite long"
-                }
-                
-            ],
-            "images": [
-                {"path": "279.jpg"},
-                {"path": "280.jpg"},
-                {"path": "281.jpg"}
-            ]
-        },
-        {
-            "cityID": "c13",
-            "name": "Kringa",
-            "content": [
-                {
-                    "date": "1-4-2014",
-                    "info": "More content!"
-                },
-                {
-                    "date": "1-5-2014",
-                    "info": "Stuff stuff stuff!"
-                }
-            ],
-            "images": [
-            ]
-        },
-        {
-            "cityID": "c14",
-            "name": "Trieste",
-            "content": [
-                {
-                    "date": "1-2-2014",
-                    "info": "All my content would go here - this would be the post."
-                },
-                {
-                    "date": "1-3-2014",
-                    "info": "Here is another day worth of stuff. These sections would get quite long"
-                }
-                
-            ],
-            "images": [
-                {"path": "1.jpg"},
-                {"path": "2.jpg"},
-                {"path": "3.jpg"},
-                {"path": "5.jpg"},
-                {"path": "9.jpg"},
-                {"path": "10.jpg"},
-                {"path": "11.jpg"},
-                {"path": "12.jpg"},
-                {"path": "13.jpg"},
-                {"path": "14.jpg"}
-            ]
-        },
-        {
-            "cityID": "c15",
-            "name": "Florence",
-            "content": [
-                {
-                    "date": "1-4-2014",
-                    "info": "More content!"
-                },
-                {
-                    "date": "1-5-2014",
-                    "info": "Stuff stuff stuff!"
-                }
-            ],
-            "images": [
-                {"path": "17.jpg"},
-                {"path": "19.jpg"},
-                {"path": "20.jpg"},
-                {"path": "21.jpg"},
-                {"path": "22.jpg"},
-                {"path": "23.jpg"},
-                {"path": "24.jpg"},
-                {"path": "25.jpg"},
-                {"path": "26.jpg"},
-                {"path": "28.jpg"},
-                {"path": "29.jpg"},
-                {"path": "32.jpg"},
-                {"path": "33.jpg"},
-                {"path": "34.jpg"},
-                {"path": "35.jpg"},
-                {"path": "36.jpg"},
-                {"path": "39.jpg"},
-                {"path": "40.jpg"},
-                {"path": "41.jpg"},
-                {"path": "42.jpg"},
-                {"path": "43.jpg"},
-                {"path": "46.jpg"},
-                {"path": "47.jpg"},
-                {"path": "50.jpg"},
-                {"path": "51.jpg"},
-                {"path": "52.jpg"},
-                {"path": "54.jpg"},
-                {"path": "55.jpg"},
-                {"path": "56.jpg"},
-                {"path": "58.jpg"},
-                {"path": "59.jpg"},
-                {"path": "62.jpg"},
-                {"path": "63.jpg"},
-                {"path": "65.jpg"},
-                {"path": "66.jpg"},
-                {"path": "67.jpg"},
-                {"path": "68.jpg"},
-                {"path": "70.jpg"},
-                {"path": "71.jpg"},
-                {"path": "72.jpg"},
-                {"path": "73.jpg"},
-                {"path": "76.jpg"},
-                {"path": "78.jpg"},
-                {"path": "80.jpg"},
-                {"path": "85.jpg"},
-                {"path": "86.jpg"},
-                {"path": "87.jpg"},
-                {"path": "88.jpg"},
-                {"path": "89.jpg"},
-                {"path": "92.jpg"},
-                {"path": "93.jpg"},
-                {"path": "96.jpg"},
-                {"path": "98.jpg"},
-                {"path": "99.jpg"},
-                {"path": "100.jpg"},
-                {"path": "101.jpg"},
-                {"path": "103.jpg"},
-                {"path": "104.jpg"},
-                {"path": "108.jpg"},
-                {"path": "111.jpg"},
-                {"path": "112.jpg"},
-                {"path": "113.jpg"},
-                {"path": "114.jpg"}
-            ]
-        },
-        {
-            "cityID": "c16",
-            "name": "Impruneta",
-            "content": [
-                {
-                    "date": "1-4-2014",
-                    "info": "More content!"
-                },
-                {
-                    "date": "1-5-2014",
-                    "info": "Stuff stuff stuff!"
-                }
-            ],
-            "images": [
-            ]
-        },
-        {
-            "cityID": "c17",
-            "name": "San Casciano in Val di Pesa",
-            "content": [
-                {
-                    "date": "1-2-2014",
-                    "info": "All my content would go here - this would be the post."
-                },
-                {
-                    "date": "1-3-2014",
-                    "info": "Here is another day worth of stuff. These sections would get quite long"
-                }
-                
-            ],
-            "images": [
+                {"path": "Rovinj_1.jpg"}
             ]
         }         
     ]
