@@ -13,7 +13,7 @@ var map = null; // the map
 var selectedIcon = null;
 var nonSelectedIcon = null;
 var nonSelectedIcon = null;
-    
+
 //=============FUNCTIONS=====================//
 function closeGallery() {
     "use strict";
@@ -55,7 +55,10 @@ function makeMarker(feature, latlng) {
         useIcon = nonSelectedIcon;
     }
     //creates the new marker
-    newMarker = L.marker(latlng, {icon: useIcon, markerID: feature.properties.Order}).on('click', function (e) {
+    newMarker = L.marker(latlng, {
+        icon: useIcon,
+        markerID: feature.properties.Order
+    }).on('click', function (e) {
         //makes sure that current marker has a value before it sets the icon on it
         if (currentMarker !== null) {
             //sets the old red marker back to the blue one
@@ -132,7 +135,7 @@ function updateContent() {
 
     //updates the title text
     $("#titleText").text(" " + feature.properties.Order + ". " + feature.properties.City + " ");
-    
+
     //clear the existing html
     $("#galleryContent").html("");
 
@@ -155,7 +158,7 @@ function updateContent() {
     $.each(images, function (index, data) {
         var path = "<span><a class='fancybox' rel='group' href='img/" + tripPath + "/" + cityName + "/" + data.path + "'><img class='gallery-image' src='img/" + tripPath + "/" + cityName + "/" + data.path + "' alt='image' /></a></span>";
         $("#galleryContent").append(path);
-        numPics++;
+        numPics = numPics + 1;
     });
 
     //updates the size of the galleryContent box based on how many picures there are (uses an average of 185 px width per picture)
@@ -168,7 +171,7 @@ function updateContent() {
     } else {
         $("#gallery").css("visibility", "visible");
     }
-}//end update content
+} //end update content
 
 //for each feature
 function onEachCity(feature, layer) {
@@ -193,7 +196,7 @@ function markCities(data) {
         pointToLayer: makeMarker
     });
     markers = L.layerGroup(markerArray).addTo(map);
-}//end markCities function
+} //end markCities function
 
 //initializes the accordion
 function setUpAccordion() {
@@ -241,7 +244,9 @@ function loadTripData() {
         updateContent();
 
 
-    }).fail(function () {alert("There has been a problem loading the data."); });
+    }).fail(function () {
+        alert("There has been a problem loading the data.");
+    });
 }
 
 //selects which trip path is going to be used
@@ -249,27 +254,28 @@ function tripSelect() {
     "use strict";
     //the center of the map - set at Croatia's initially
     //the desired zoom level - set at 7 initially
-    var center = L.latLng(44.8, 15.3), zoom = 7;
+    var center = L.latLng(44.8, 15.3),
+        zoom = 7;
     tripPath = "Croatia"; //initially sets the path to Croatia
     //adds an event listener for when the trip is changed
     $("#dropdown").on("change", function () {
         var selectedTrip = $("#dropdown").val();
         switch (selectedTrip) {
-        case "Croatia":
-            center = L.latLng(44.8, 15.3);
-            tripPath = "Croatia";
-            zoom = 7;
-            break;
-        case "China":
-            center = L.latLng(13, 115);
-            tripPath = "China";
-            zoom = 4;
-            break;
-        case "Honeymoon":
-            center = L.latLng(52, -2);
-            tripPath = "Honeymoon";
-            zoom = 4;
-            break;
+            case "Croatia":
+                center = L.latLng(44.8, 15.3);
+                tripPath = "Croatia";
+                zoom = 7;
+                break;
+            case "China":
+                center = L.latLng(13, 115);
+                tripPath = "China";
+                zoom = 4;
+                break;
+            case "Honeymoon":
+                center = L.latLng(52, -2);
+                tripPath = "Honeymoon";
+                zoom = 4;
+                break;
         }
 
         map.setView(center, zoom);
@@ -311,7 +317,7 @@ function navigate() {
             markerNum = 0;
         } else {
             currentCity = newCity;
-            markerNum++;
+            markerNum = markerNum + 1;
         }
         updateContent();
         updateMarker(oldMarker);
@@ -327,12 +333,12 @@ $(document).ready(function () {
     resize(); //call it once to get initial sizes
     window.onresize = resize(); //call it whenever the window resizes
 
-    
+
     //set up a basic map window by selecting the "map" div element in index.html
-	map = L.map("map", {
-		minZoom: 3
-	});
-    
+    map = L.map("map", {
+        minZoom: 3
+    });
+
     //createes the "selected" icon
     selectedIcon = L.icon({
         iconUrl: 'js/images/marker-icon-red.png',
@@ -341,7 +347,7 @@ $(document).ready(function () {
         popupAnchor: [0, -40],
         iconAnchor: [13, 40]
     });
-    
+
     nonSelectedIcon = L.icon({
         iconUrl: 'js/images/marker-icon.png',
         iconRetinaUrl: 'js/images/marker-icon-2x.png',
@@ -349,27 +355,29 @@ $(document).ready(function () {
         popupAnchor: [0, -40],
         iconAnchor: [13, 40]
     });
-    
+
     //identify which tile layer to use and then add it to the map
-	L.tileLayer(
-		'https://api.mapbox.com/styles/v1/jkoser/cio79mjga000maem582l5vmrw/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiamtvc2VyIiwiYSI6ImNpbWtxNTg2NzAxNGl2cGtnY3k1dGU3aXEifQ.VbZ8l9bL6wsh8dgaI8gTuw',
-        { attribution: 'Custom map layer made using MapBox Studio by Jon Koser' }
+    L.tileLayer(
+        'https://api.mapbox.com/styles/v1/jkoser/cio79mjga000maem582l5vmrw/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiamtvc2VyIiwiYSI6ImNpbWtxNTg2NzAxNGl2cGtnY3k1dGU3aXEifQ.VbZ8l9bL6wsh8dgaI8gTuw',
+        {
+            attribution: 'Custom map layer made using MapBox Studio by Jon Koser'
+        }
     ).addTo(map);
-    
+
 
     //initialize fancybox lightbox
     $(".fancybox").fancybox();
-        
+
     //lets people select which trip to look at
     tripSelect();
 
     //sets up closing the gallery
     closeGallery();
-    
+
     //set up the navigation
     navigate();
-    
+
     //initialized the accordion
     setUpAccordion();
-    
+
 });
